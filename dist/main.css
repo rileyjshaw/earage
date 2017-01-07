@@ -1,0 +1,143 @@
+body {
+  background: #eee; }
+
+.dometer, .gauge, .needle, .spinner, .spinner::after, .level, .level::after {
+  position: absolute; }
+
+.dometer {
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border: 1px solid #01cd73;
+  font: 600 16px/16px "Open Sans", sans-serif;
+  color: #00bc62;
+  background: #eee; }
+
+.gauge {
+  bottom: 160px;
+  left: 50%;
+  height: 160px;
+  width: 320px;
+  margin: -160px;
+  border-radius: 160px 160px 0 0;
+  background: #01cd73; }
+
+.needle, .spinner {
+  bottom: 0;
+  left: 50%; }
+
+.needle {
+  height: 0;
+  width: 0;
+  margin-left: -20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 96px solid #eee;
+  -webkit-transform-origin: 50% 100%;
+      -ms-transform-origin: 50% 100%;
+          transform-origin: 50% 100%; }
+
+.spinner {
+  height: 40px;
+  width: 80px;
+  margin-left: -40px;
+  border-radius: 40px 40px 0 0;
+  background: #eee; }
+  .spinner::after {
+    content: '';
+    top: 30px;
+    left: 30px;
+    height: 10px;
+    width: 20px;
+    border-radius: 10px 10px 0 0;
+    background: #01cd73; }
+
+.levels {
+  list-style: none;
+  padding: 0; }
+
+.level {
+  bottom: 0;
+  padding: 0 164px; }
+  .level::after {
+    content: attr(data-age);
+    color: #eee; }
+  .level:nth-child(1) {
+    right: 160px;
+    -webkit-transform-origin: 100% 50%;
+        -ms-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+            transform: rotate(15deg); }
+    .level:nth-child(1)::after {
+      right: 136px;
+      -webkit-transform: translate(100%, 0) rotate(-15deg);
+          -ms-transform: translate(100%, 0) rotate(-15deg);
+              transform: translate(100%, 0) rotate(-15deg); }
+  .level:nth-child(2) {
+    right: 160px;
+    -webkit-transform-origin: 100% 50%;
+        -ms-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
+    .level:nth-child(2)::after {
+      right: 136px;
+      -webkit-transform: translate(100%, 0) rotate(-45deg);
+          -ms-transform: translate(100%, 0) rotate(-45deg);
+              transform: translate(100%, 0) rotate(-45deg); }
+  .level:nth-child(3) {
+    right: 160px;
+    -webkit-transform-origin: 100% 50%;
+        -ms-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    -webkit-transform: rotate(75deg);
+        -ms-transform: rotate(75deg);
+            transform: rotate(75deg); }
+    .level:nth-child(3)::after {
+      right: 136px;
+      -webkit-transform: translate(100%, 0) rotate(-75deg);
+          -ms-transform: translate(100%, 0) rotate(-75deg);
+              transform: translate(100%, 0) rotate(-75deg); }
+  .level:nth-child(4) {
+    left: 160px;
+    -webkit-transform-origin: 0% 50%;
+        -ms-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+    -webkit-transform: rotate(-75deg);
+        -ms-transform: rotate(-75deg);
+            transform: rotate(-75deg); }
+    .level:nth-child(4)::after {
+      left: 136px;
+      -webkit-transform: translate(-100%, 0) rotate(75deg);
+          -ms-transform: translate(-100%, 0) rotate(75deg);
+              transform: translate(-100%, 0) rotate(75deg); }
+  .level:nth-child(5) {
+    left: 160px;
+    -webkit-transform-origin: 0% 50%;
+        -ms-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+    .level:nth-child(5)::after {
+      left: 136px;
+      -webkit-transform: translate(-100%, 0) rotate(45deg);
+          -ms-transform: translate(-100%, 0) rotate(45deg);
+              transform: translate(-100%, 0) rotate(45deg); }
+  .level:nth-child(6) {
+    left: 160px;
+    -webkit-transform-origin: 0% 50%;
+        -ms-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+    -webkit-transform: rotate(-15deg);
+        -ms-transform: rotate(-15deg);
+            transform: rotate(-15deg); }
+    .level:nth-child(6)::after {
+      left: 136px;
+      -webkit-transform: translate(-100%, 0) rotate(15deg);
+          -ms-transform: translate(-100%, 0) rotate(15deg);
+              transform: translate(-100%, 0) rotate(15deg); }

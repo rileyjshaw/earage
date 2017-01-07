@@ -1,0 +1,95 @@
+$gaugeRadius: 160px
+$spinnerRadius: $gaugeRadius / 4
+$needleHeight: $gaugeRadius * 0.6
+$textSpacing: 8px
+$bg: #eee
+$fg: #01cd73
+$numSteps: 6
+
+// messy, beware
+//
+body
+  background: $bg
+
+.dometer, .gauge, .needle, .spinner, .spinner::after, .level, .level::after
+  position: absolute
+
+.dometer
+  $gapSize: 2px
+  top: $gapSize
+  right: $gapSize
+  bottom: $gapSize
+  left: $gapSize
+  border: 1px solid $fg
+  font: 600 16px / 16px 'Open Sans', sans-serif
+  color: $fg - #111
+  background: $bg
+
+.gauge
+  bottom: $gaugeRadius
+  left: 50%
+  height: $gaugeRadius
+  width: $gaugeRadius * 2
+  margin: 0 -$gaugeRadius
+  border-radius: $gaugeRadius $gaugeRadius 0 0
+  background: $fg
+
+.needle, .spinner
+  bottom: 0
+  left: 50%
+
+.needle
+  height: 0
+  width: 0
+  margin-left: -$spinnerRadius / 2
+  border-left: $spinnerRadius / 2 solid transparent
+  border-right: $spinnerRadius / 2 solid transparent
+  border-bottom: $needleHeight solid $bg
+  transform-origin: 50% 100%
+
+.spinner
+  height: $spinnerRadius
+  width: $spinnerRadius * 2
+  margin-left: -$spinnerRadius
+  border-radius: $spinnerRadius $spinnerRadius 0 0
+  background: $bg
+  &::after
+    $pinRadius: $spinnerRadius / 4
+    content: ''
+    top: $spinnerRadius - $pinRadius
+    left: $spinnerRadius - $pinRadius
+    height: $pinRadius
+    width: $pinRadius * 2
+    border-radius: $pinRadius $pinRadius 0 0
+    background: $fg
+
+.levels
+  list-style: none
+  padding: 0
+
+.level
+  bottom: 0
+  padding: 0 $gaugeRadius + 4px
+  &::after
+    content: attr(data-age)
+    color: $bg
+
+  @for $i from 1 through $numSteps
+    $stepDegs: 180 / $numSteps
+    &:nth-child(#{$i})
+      $degs: $i * $stepDegs - $stepDegs / 2
+      @if $degs > 90
+        $degs: $degs - 180
+        left: $gaugeRadius
+        transform-origin: 0% 50%
+        transform: rotate(#{$degs}deg)
+        &::after
+          left: $gaugeRadius - 24px
+          transform: translate(-100%, 0) rotate(#{-$degs}deg)
+      @else
+        right: $gaugeRadius
+        transform-origin: 100% 50%
+        transform: rotate(#{$degs}deg)
+        &::after
+          right: $gaugeRadius - 24px
+          transform: translate(100%, 0) rotate(#{-$degs}deg)
